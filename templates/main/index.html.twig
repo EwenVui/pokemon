@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block header %}
+{% endblock %}
+{% block main %}
+    <div id="HomeEntry">
+        <a href="{{ path('main_pokemons') }}">
+        <img src="{{ asset('img/pokemon/pokemon_logo.svg.png') }}" alt="Logo POKEMON">
+        <h1 id="homeTitle">Attraper les tous</h1>
+        </a>
+    </div>
+{% endblock %}

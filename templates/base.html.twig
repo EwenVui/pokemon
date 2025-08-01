@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="icon" href="{{ asset('img/icon/pokeball-ok.jpg') }}">
+    {% block stylesheets %}
+    {% endblock %}
+
+    {% block javascripts %}
+        {% block importmap %}{{ importmap('app') }}{% endblock %}
+    {% endblock %}
+</head>
+<body>
+<header>
+    {% block header %}
+        <nav>
+            <div id="navblock">
+                {% block navbar %}
+                    <a class="navLink" href="{{ path('main_home') }}">Accueil</a>
+                {% endblock %}
+            </div>
+            <hr>
+        </nav>
+    {% endblock %}
+</header>
+<main>
+    {% block main %}{% endblock %}
+</main>
+</body>
+</html>

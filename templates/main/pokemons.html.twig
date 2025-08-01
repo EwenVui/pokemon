@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Pokémons{% endblock %}
+
+{% block navbar %}
+    {{ parent() }}
+    <span> / </span>
+    <a class="navLink" href="{{ path('main_pokemons') }}">Liste</a>
+{% endblock %}
+
+{% block main %}
+    <div id="sortBox">
+        <a href="{{ path('main_pokemons', {'sort': 'nom'}) }}"
+           class="{{ currentSort == 'nom' ? 'active' : '' }}">
+            Trier par nom
+        </a>
+        <br>
+        <a href="{{ path('main_pokemons', {'sort': 'capture'}) }}"
+           class="{{ currentSort == 'capture' ? 'active' : '' }}">
+            Trier par pokemon capturé
+        </a>
+    <div class="pokemon-grid">
+    {% for pkm in lstPokemons %}
+
+            <div class="pkm_box">
+                <a href="{{ path('main_pokemon', {'id' : pkm.id}) }}">
+                <h4>{{ pkm.nom }}</h4>
+                <img src="{{ asset('img/icon/pokeball-' ~ (pkm.estCapture ? 'ok' : 'ko') ~ '.jpg') }}"
+                     alt="{{ pkm.estCapture ? "pokeball" : "pokeball grisée" }}">
+                <img src="{{ asset('img/pokemon/' ~ pkm.image) }}"
+                     alt="Image d'un {{ pkm.nom }}">
+                </a>
+                <hr>
+                <div id="actionPkm">
+                    <a href="{{ path('main_switchCapture',{'id' : pkm.id })}}">
+                        {{ pkm.estCapture ? 'Relâcher' : 'Capturer' }}
+                    </a>
+                </div>
+            </div>
+    {% endfor %}
+    </div>
+{% endblock %}

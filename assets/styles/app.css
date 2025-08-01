@@ -1,0 +1,416 @@
+/* Reset et base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+/* Header et Navigation */
+header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 3px solid #ffcb05;
+}
+
+nav {
+    padding: 1rem 2rem;
+}
+
+#navblock {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 600;
+}
+
+.navLink {
+    color: #3c5aa6;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.navLink:hover {
+    background: #3c5aa6;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(60, 90, 166, 0.3);
+}
+
+.navLink::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.navLink:hover::before {
+    left: 100%;
+}
+
+nav hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, #ffcb05, #3c5aa6, #ffcb05);
+    margin-top: 1rem;
+}
+
+nav span {
+    color: #666;
+    font-weight: normal;
+}
+
+/* Main content */
+main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Page d'accueil */
+#HomeEntry {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    margin: 2rem auto;
+    max-width: 600px;
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+#HomeEntry:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+}
+
+#HomeEntry a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+#HomeEntry img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 2rem;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+}
+
+#homeTitle {
+    font-size: 2.5rem;
+    color: #3c5aa6;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0;
+}
+
+/* Liste des Pokémons */
+#sortBox {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+#sortBox a {
+    display: inline-block;
+    margin: 0.5rem 1rem;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(45deg, #3c5aa6, #5a7bc4);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(60, 90, 166, 0.3);
+}
+
+#sortBox a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(60, 90, 166, 0.4);
+}
+
+#sortBox a.active {
+    background: linear-gradient(45deg, #ffcb05, #ffd93d);
+    color: #333;
+    box-shadow: 0 4px 15px rgba(255, 203, 5, 0.4);
+}
+
+/* Main content */
+main {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Container flexbox pour la liste des Pokémons */
+.pokemon-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.pkm_box {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    /* Flexbox sizing */
+    flex: 0 1 220px;
+    min-width: 200px;
+    max-width: 280px;
+}
+
+.pkm_box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ffcb05, #3c5aa6, #ff6b6b, #4ecdc4);
+    border-radius: 20px 20px 0 0;
+}
+
+.pkm_box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.pkm_box a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.pkm_box h4 {
+    color: #3c5aa6;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.pkm_box img {
+    max-width: 80px;
+    height: auto;
+    margin: 0.5rem;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    /* Support pour transparence */
+    background: rgba(240, 240, 240, 0.3);
+    padding: 5px;
+}
+
+/* Image Pokeball spécifique */
+.pkm_box img[alt*="pokeball"] {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(240, 240, 240, 0.4) 100%);
+    border: 2px solid rgba(60, 90, 166, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pkm_box img:last-of-type {
+    max-width: 120px;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+    background: transparent;
+    padding: 0;
+}
+
+.pkm_box:hover img:last-of-type {
+    transform: scale(1.1);
+}
+
+.pkm_box hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #3c5aa6, transparent);
+    margin: 1rem 0;
+}
+
+#actionPkm {
+    margin-top: 1rem;
+}
+
+#actionPkm a {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+#actionPkm a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+    background: linear-gradient(45deg, #4ecdc4, #44a08d);
+}
+
+/* Page de détail */
+main > img {
+    max-width: 300px;
+    height: auto;
+    margin: 0 auto 2rem;
+    display: block;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
+}
+
+main > div {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+}
+
+main > div span {
+    background: linear-gradient(45deg, #3c5aa6, #5a7bc4);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(60, 90, 166, 0.3);
+    transition: transform 0.3s ease;
+}
+
+main > div span:hover {
+    transform: translateY(-2px);
+}
+
+#description {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #ffcb05;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    nav {
+        padding: 1rem;
+    }
+
+    #navblock {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    main {
+        padding: 1rem;
+    }
+
+    #homeTitle {
+        font-size: 2rem;
+    }
+
+    /* Flexbox responsive */
+    .pokemon-grid {
+        gap: 1rem;
+    }
+
+    .pkm_box {
+        flex: 0 1 180px;
+        min-width: 160px;
+        padding: 1rem;
+    }
+
+    #sortBox a {
+        display: block;
+        margin: 0.5rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .pokemon-grid {
+        gap: 0.8rem;
+    }
+
+    .pkm_box {
+        flex: 0 1 140px;
+        min-width: 130px;
+        padding: 0.8rem;
+    }
+
+    .pkm_box img {
+        max-width: 60px;
+    }
+
+    .pkm_box img:last-of-type {
+        max-width: 90px;
+    }
+
+    #HomeEntry {
+        padding: 2rem 1rem;
+        margin: 1rem;
+    }
+
+    #homeTitle {
+        font-size: 1.5rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pkm_box {
+    animation: fadeIn 0.6s ease forwards;
+}
+
+.pkm_box:nth-child(even) {
+    animation-delay: 0.1s;
+}
+
+.pkm_box:nth-child(odd) {
+    animation-delay: 0.2s;
+}

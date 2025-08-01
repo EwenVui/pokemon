@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail {{ pokemon.nom }}{% endblock %}
+
+
+{% block navbar %}
+    {{ parent() }}
+    <span> / </span>
+    <a class="navLink" href="{{ path('main_pokemons') }}">Liste</a>
+    <span> / </span>
+    <a class="navLink" href="{{ path('main_pokemon', {'id' : pokemon.id}) }}">Details</a>
+{% endblock %}
+
+{% block main %}
+    <img src="{{ asset('img/pokemon/' ~ pokemon.image) }}"
+         alt="Image d'un {{ pokemon.nom }}">
+    <div>
+        <span>Attaque: {{ pokemon.attaque }}</span>
+        <span>Défense: {{ pokemon.defense }}</span>
+    </div>
+    <p id="description">
+        {{ pokemon.description }}
+    </p>
+{% endblock %}
